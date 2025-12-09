@@ -1,0 +1,100 @@
+{
+    "common": {
+        "loading": "Loading...",
+        "error": "Something went wrong",
+        "retry": "Try again",
+        "search": "Search",
+        "settings": "Settings",
+        "close": "Close",
+        "save": "Save",
+        "cancel": "Cancel",
+        "noData": "No data available",
+        "refresh": "Refresh",
+        "home": "Home",
+        "forecast": "Forecast",
+        "dashboard": "Dashboard"
+    },
+    "search": {
+        "placeholder": "Search for a city...",
+        "noResults": "No cities found",
+        "recentSearches": "Recent searches",
+        "popularCities": "Popular cities",
+        "typeToSearch": "Type to search cities"
+    },
+    "weather": {
+        "current": "Current Weather",
+        "feelsLike": "Feels like",
+        "humidity": "Humidity",
+        "wind": "Wind",
+        "windSpeed": "Wind Speed",
+        "windDirection": "Direction",
+        "pressure": "Pressure",
+        "visibility": "Visibility",
+        "uvIndex": "UV Index",
+        "precipitation": "Precipitation",
+        "chanceOfRain": "Chance of Rain",
+        "airQuality": "Air Quality",
+        "sunrise": "Sunrise",
+        "sunset": "Sunset",
+        "highLow": "H: {{high}}° L: {{low}}°",
+        "details": "Weather Details",
+        "solarSchedule": "Daylight Dynamics",
+        "additionalMetrics": "Atmospheric Intelligence",
+        "aqiDescription": "Live air quality and local pollutant indices."
+    },
+    "forecast": {
+        "hourly": "Hourly",
+        "daily": "10-Day Forecast",
+        "today": "Today",
+        "tomorrow": "Tomorrow",
+        "weatherForecast": "Weather Forecast"
+    },
+    "uvLevels": {
+        "low": "Low",
+        "moderate": "Moderate",
+        "high": "High",
+        "veryHigh": "Very High",
+        "extreme": "Extreme"
+    },
+    "uvAdvice": {
+        "low": "No protection needed",
+        "moderate": "Wear sunscreen",
+        "high": "Seek shade during midday",
+        "veryHigh": "Avoid sun exposure",
+        "extreme": "Stay indoors"
+    },
+    "aqiLevels": {
+        "good": "Good",
+        "fair": "Fair",
+        "moderate": "Moderate",
+        "poor": "Poor",
+        "veryPoor": "Very Poor"
+    },
+    "map": {
+        "precipitation": "Precipitation Map",
+        "temperature": "Temperature",
+        "clouds": "Clouds"
+    },
+    "settings": {
+        "theme": "Theme",
+        "language": "Language",
+        "units": "Units",
+        "light": "Light",
+        "dark": "Dark",
+        "system": "System",
+        "metric": "Metric (°C)",
+        "imperial": "Imperial (°F)"
+    },
+    "errors": {
+        "networkError": "Network error. Check your connection.",
+        "cityNotFound": "City not found",
+        "apiError": "Unable to fetch weather data",
+        "geolocationDenied": "Location access denied",
+        "geolocationUnavailable": "Location services unavailable",
+        "rateLimit": "Too many requests. Please wait."
+    },
+    "about": {
+        "title": "About SkyWeather",
+        "description": "A modern weather application with real-time forecasts and beautiful visualizations."
+    }
+}

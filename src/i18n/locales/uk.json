@@ -1,0 +1,100 @@
+{
+    "common": {
+        "loading": "Завантаження...",
+        "error": "Щось пішло не так",
+        "retry": "Спробувати знову",
+        "search": "Пошук",
+        "settings": "Налаштування",
+        "close": "Закрити",
+        "save": "Зберегти",
+        "cancel": "Скасувати",
+        "noData": "Дані недоступні",
+        "refresh": "Оновити",
+        "home": "Головна",
+        "forecast": "Прогноз",
+        "dashboard": "Статистика"
+    },
+    "search": {
+        "placeholder": "Шукати місто...",
+        "noResults": "Міста не знайдено",
+        "recentSearches": "Останні пошуки",
+        "popularCities": "Популярні міста",
+        "typeToSearch": "Введіть назву міста"
+    },
+    "weather": {
+        "current": "Поточна погода",
+        "feelsLike": "Відчувається",
+        "humidity": "Вологість",
+        "wind": "Вітер",
+        "windSpeed": "Швидкість вітру",
+        "windDirection": "Напрямок",
+        "pressure": "Тиск",
+        "visibility": "Видимість",
+        "uvIndex": "УФ-індекс",
+        "precipitation": "Опади",
+        "chanceOfRain": "Ймовірність дощу",
+        "airQuality": "Якість повітря",
+        "sunrise": "Схід сонця",
+        "sunset": "Захід сонця",
+        "highLow": "Макс: {{high}}° Мін: {{low}}°",
+        "details": "Деталі погоди",
+        "solarSchedule": "Світловий день",
+        "additionalMetrics": "Атмосферні показники",
+        "aqiDescription": "Показники якості повітря та забруднювачів."
+    },
+    "forecast": {
+        "hourly": "Погодинно",
+        "daily": "Прогноз на 10 днів",
+        "today": "Сьогодні",
+        "tomorrow": "Завтра",
+        "weatherForecast": "Прогноз погоди"
+    },
+    "uvLevels": {
+        "low": "Низький",
+        "moderate": "Помірний",
+        "high": "Високий",
+        "veryHigh": "Дуже високий",
+        "extreme": "Екстремальний"
+    },
+    "uvAdvice": {
+        "low": "Захист не потрібен",
+        "moderate": "Використовуйте сонцезахисний крем",
+        "high": "Шукайте тінь опівдні",
+        "veryHigh": "Уникайте перебування на сонці",
+        "extreme": "Залишайтесь у приміщенні"
+    },
+    "aqiLevels": {
+        "good": "Добре",
+        "fair": "Прийнятно",
+        "moderate": "Помірно",
+        "poor": "Погано",
+        "veryPoor": "Дуже погано"
+    },
+    "map": {
+        "precipitation": "Карта опадів",
+        "temperature": "Температура",
+        "clouds": "Хмарність"
+    },
+    "settings": {
+        "theme": "Тема",
+        "language": "Мова",
+        "units": "Одиниці",
+        "light": "Світла",
+        "dark": "Темна",
+        "system": "Системна",
+        "metric": "Метрична (°C)",
+        "imperial": "Імперська (°F)"
+    },
+    "errors": {
+        "networkError": "Помилка мережі. Перевірте підключення.",
+        "cityNotFound": "Місто не знайдено",
+        "apiError": "Не вдалося отримати дані про погоду",
+        "geolocationDenied": "Доступ до геолокації заборонено",
+        "geolocationUnavailable": "Служби геолокації недоступні",
+        "rateLimit": "Забагато запитів. Зачекайте."
+    },
+    "about": {
+        "title": "Про SkyWeather",
+        "description": "Сучасний додаток для погоди з прогнозами в реальному часі та красивою візуалізацією."
+    }
+}
