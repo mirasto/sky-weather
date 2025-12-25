@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+
+  <title>SkyWeather - Modern Weather App</title>
+  <meta name="description"
+    content="SkyWeather is a beautiful, modern weather application with real-time forecasts, interactive maps, and detailed weather analytics." />
+  <meta name="keywords" content="weather, forecast, temperature, rain, UV index, air quality, weather app" />
+  <meta name="author" content="mirasto" />
+
+  <meta property="og:type" content="website" />
+  <meta property="og:url" content="/" />
+  <meta property="og:title" content="SkyWeather - Modern Weather App" />
+  <meta property="og:description"
+    content="Beautiful weather forecasts with real-time data and interactive visualizations." />
+  <meta property="og:image" content="/og-image.png" />
+
+  <meta name="twitter:card" content="summary_large_image" />
+  <meta name="twitter:url" content="/" />
+  <meta name="twitter:title" content="SkyWeather - Modern Weather App" />
+  <meta name="twitter:description"
+    content="Beautiful weather forecasts with real-time data and interactive visualizations." />
+  <meta name="twitter:image" content="/og-image.png" />
+
+  <meta name="theme-color" content="#6366f1" />
+  <meta name="msapplication-TileColor" content="#6366f1" />
+
+  <link rel="manifest" href="/manifest.webmanifest" />
+  <link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png" />
+
+  <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
+  <link rel="icon" type="image/png" sizes="32x32" href="/favicon-32x32.png" />
+  <link rel="icon" type="image/png" sizes="16x16" href="/favicon-16x16.png" />
+
+  <link rel="stylesheet" href="https://unpkg.com/leaflet@1.9.4/dist/leaflet.css"
+    integrity="sha256-p4NxAoJBhIIN+hmNHrzRCf9tD/miZyoHS5obTRR9BMY=" crossorigin="" />
+
+  <script>
+    (function () {
+      const theme = localStorage.getItem('skyweather-theme');
+      const prefersDark = window.matchMedia('(prefers-color-scheme: dark)').matches;
+
+      if (theme === 'dark' || (!theme && prefersDark)) {
+        document.documentElement.classList.add('dark');
+      }
+    })();
+  </script>
+</head>
+
+<body class="antialiased">
+  <div id="root"></div>
+  <script type="module" src="/src/main.tsx"></script>
+</body>
+
+</html>
