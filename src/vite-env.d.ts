@@ -1,0 +1,10 @@
+/// <reference types="vite/client" />
+
+interface ImportMetaEnv {
+    readonly VITE_API_KEY_OPENWEATHERMAP: string;
+    readonly VITE_GOOGLE_MAPS_API_KEY?: string;
+}
+
+interface ImportMeta {
+    readonly env: ImportMetaEnv;
+}
