@@ -2,6 +2,8 @@
 
 <div align="center">
 
+![Preview](https://i.postimg.cc/wjW6mQrj/sky-Weather.png)
+
 
 **A state-of-the-art meteorological intelligence platform built for precision and visual elegance.**
 
@@ -119,7 +121,3 @@ src/
 - **Reliability**: Component and logic testing via [Vitest](https://vitest.dev/).
 
 ---
-
-<div align="center">
-  <sub>Built with precision for the modern web ecosystem.</sub>
-</div>
