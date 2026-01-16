@@ -33,7 +33,7 @@ export const PrecipitationMap = memo(function PrecipitationMap() {
             if (!mapContainerRef.current || mapInstanceRef.current) return;
 
             try {
-                
+
                 const map = L.map(mapContainerRef.current, {
                     center: [coordinates.lat, coordinates.lng],
                     zoom: 6,
@@ -49,7 +49,7 @@ export const PrecipitationMap = memo(function PrecipitationMap() {
                 map.zoomControl.setPosition('topright');
 
                 L.tileLayer(API_CONFIG.STADIA_TILES_URL, {
-                    attribution: ''
+                    attribution: '&copy; <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a> contributors &copy; <a href="https://carto.com/attributions">CARTO</a>'
                 }).addTo(map);
 
                 L.tileLayer(getWeatherMapTileUrl('precipitation'), {

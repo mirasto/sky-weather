@@ -9,7 +9,7 @@ import { CACHE_CONFIG } from '@/utils/constants';
 
 const API_KEY = import.meta.env.VITE_API_KEY_OPENWEATHERMAP;
 const OPENWEATHER_BASE = 'https://api.openweathermap.org';
-const OPENWEATHER_MAP_URL = 'https://maps.openweathermap.org';
+const OPENWEATHER_MAP_URL = 'https://tile.openweathermap.org';
 
 export const weatherApi = createApi({
     reducerPath: 'weatherApi',
@@ -18,7 +18,7 @@ export const weatherApi = createApi({
     }),
     tagTypes: ['Weather', 'Forecast', 'AirQuality'],
     endpoints: (builder) => ({
-        
+
         getCurrentWeather: builder.query<CurrentWeatherResponse, Coordinates>({
             query: ({ lat, lng }) => ({
                 url: '/data/2.5/weather',
@@ -115,12 +115,12 @@ export const fetchUVIndex = async (lat: number, lng: number) => {
 
 export const getWeatherMapTileUrl = (layer: 'precipitation' | 'temperature' | 'clouds' = 'precipitation') => {
     const layerCodes = {
-        precipitation: 'PR0',
-        temperature: 'TA2',
-        clouds: 'CL'
+        precipitation: 'precipitation_new',
+        temperature: 'temp_new',
+        clouds: 'clouds_new'
     };
 
-    return `${OPENWEATHER_MAP_URL}/maps/2.0/weather/${layerCodes[layer]}/{z}/{x}/{y}.png?appid=${API_KEY}`;
+    return `${OPENWEATHER_MAP_URL}/map/${layerCodes[layer]}/{z}/{x}/{y}.png?appid=${API_KEY}`;
 };
 
 export const getWeatherIconFromCode = (code: number): string => {

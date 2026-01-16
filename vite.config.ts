@@ -33,13 +33,27 @@ export default defineConfig({
                 globPatterns: ['**/*.{js,css,html,ico,png,svg,woff2}'],
                 runtimeCaching: [
                     {
-                        urlPattern: /^https:\/\/pro\.openweathermap\.org\/.*/i,
+                        urlPattern: /^https:\/\/api\.openweathermap\.org\/.*/i,
                         handler: 'NetworkFirst',
                         options: {
                             cacheName: 'weather-api-cache',
                             expiration: {
                                 maxEntries: 50,
                                 maxAgeSeconds: 60 * 5
+                            },
+                            cacheableResponse: {
+                                statuses: [0, 200]
+                            }
+                        }
+                    },
+                    {
+                        urlPattern: /^https:\/\/tile\.openweathermap\.org\/.*/i,
+                        handler: 'StaleWhileRevalidate',
+                        options: {
+                            cacheName: 'weather-tiles-cache',
+                            expiration: {
+                                maxEntries: 100,
+                                maxAgeSeconds: 60 * 60 * 24
                             },
                             cacheableResponse: {
                                 statuses: [0, 200]

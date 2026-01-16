@@ -1,16 +1,16 @@
 
 export const API_CONFIG = {
-    OPENWEATHER_BASE_URL: 'https://pro.openweathermap.org',
-    OPENWEATHER_MAP_URL: 'https://maps.openweathermap.org',
+    OPENWEATHER_BASE_URL: 'https://api.openweathermap.org',
+    OPENWEATHER_MAP_URL: 'https://tile.openweathermap.org',
     OPEN_METEO_BASE_URL: 'https://api.open-meteo.com',
-    STADIA_TILES_URL: 'https://tiles.stadiamaps.com/tiles/alidade_smooth/{z}/{x}/{y}{r}.png'
+    STADIA_TILES_URL: 'https://{s}.basemaps.cartocdn.com/rastertiles/voyager_nolabels/{z}/{x}/{y}{r}.png'
 } as const;
 
 export const CACHE_CONFIG = {
-    WEATHER_TTL: 5 * 60 * 1000, 
-    FORECAST_TTL: 30 * 60 * 1000, 
-    UV_TTL: 60 * 60 * 1000, 
-    AIR_QUALITY_TTL: 30 * 60 * 1000 
+    WEATHER_TTL: 5 * 60 * 1000,
+    FORECAST_TTL: 30 * 60 * 1000,
+    UV_TTL: 60 * 60 * 1000,
+    AIR_QUALITY_TTL: 30 * 60 * 1000
 } as const;
 
 export const STORAGE_KEYS = {
