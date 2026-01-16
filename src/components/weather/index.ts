@@ -12,5 +12,5 @@ export {
     VisibilityLevel,
     AtmosphericPressure
 } from './WeatherWidgets';
-export { PrecipitationMap } from './PrecipitationMap';
+
 export { PopularLocations, LocationCard } from './PopularLocations';
