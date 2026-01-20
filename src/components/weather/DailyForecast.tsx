@@ -15,7 +15,7 @@ import { formatTemperature, cn } from '@/utils/helpers';
 import { LIMITS } from '@/utils/constants';
 
 export function DailyForecast() {
-    const { t } = useTranslation();
+    const { t, i18n } = useTranslation();
     const coordinates = useAppSelector(selectCoordinates);
     const [data, setData] = useState<OpenMeteoDailyResponse | null>(null);
     const [isLoading, setIsLoading] = useState(true);
@@ -69,7 +69,7 @@ export function DailyForecast() {
     };
 
     const getDayName = (dateStr: string) => {
-        return new Date(dateStr).toLocaleDateString('en-US', { weekday: 'short' });
+        return new Date(dateStr).toLocaleDateString(i18n.language, { weekday: 'short' });
     };
 
     return (

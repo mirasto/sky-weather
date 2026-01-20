@@ -1,9 +1,8 @@
 import { motion } from 'framer-motion';
-import { MapPin, Droplets, Wind, Heart, HeartOff } from 'lucide-react';
+import { MapPin, Droplets, Wind } from 'lucide-react';
 import { useTranslation } from 'react-i18next';
-import { useAppDispatch, useAppSelector } from '@/store/hooks';
-import { selectCoordinates, selectLocation } from '@/store/slices/locationSlice';
-import { addFavorite, removeFavorite, selectIsFavorite } from '@/store/slices/favoritesSlice';
+import { useAppSelector } from '@/store/hooks';
+import { selectCoordinates } from '@/store/slices/locationSlice';
 import { useGetCurrentWeatherQuery } from '@/services/api/weatherApi';
 import { WeatherCardSkeleton } from '@/components/ui';
 import {
@@ -12,38 +11,17 @@ import {
     getWeatherIconUrl,
     cn
 } from '@/utils/helpers';
-import { STORAGE_KEYS, WEATHER_BACKGROUNDS } from '@/utils/constants';
+import { WEATHER_BACKGROUNDS } from '@/utils/constants';
 
 export function CurrentConditions() {
     const { t } = useTranslation();
-    const dispatch = useAppDispatch();
     const coordinates = useAppSelector(selectCoordinates);
-    const location = useAppSelector(selectLocation);
-    const isFavorite = useAppSelector((state: any) => selectIsFavorite(coordinates.lat, coordinates.lng)(state));
+    const { data: apiData, isLoading, isError, refetch } = useGetCurrentWeatherQuery(coordinates);
+    const selectedWeather = useAppSelector((state: any) => state.weatherInteraction.selectedWeather);
 
-    const { data, isLoading, isError, refetch } = useGetCurrentWeatherQuery(coordinates);
+    const data = selectedWeather || apiData;
 
-    const handleToggleFavorite = () => {
-        if (isFavorite) {
-            
-            const favorites = JSON.parse(localStorage.getItem(STORAGE_KEYS.FAVORITES) || '[]');
-            const favoriteCity = favorites.find(
-                (f: any) =>
-                    f.coordinates.lat === coordinates.lat && f.coordinates.lng === coordinates.lng
-            );
-            if (favoriteCity) {
-                dispatch(removeFavorite(favoriteCity.id));
-            }
-        } else {
-            dispatch(addFavorite({
-                name: location.city,
-                country: location.country,
-                coordinates
-            }));
-        }
-    };
-
-    if (isLoading) {
+    if (isLoading && !data) {
         return <WeatherCardSkeleton />;
     }
 
@@ -87,17 +65,6 @@ export function CurrentConditions() {
                             <p className="text-sm text-white/70">{data.sys.country}</p>
                         </div>
                     </div>
-                    <button
-                        onClick={handleToggleFavorite}
-                        className="p-2.5 rounded-full bg-white/20 hover:bg-white/30 backdrop-blur-md border border-white/20 transition-all active:scale-95"
-                        aria-label={isFavorite ? t('favorites.remove') : t('favorites.add')}
-                    >
-                        {isFavorite ? (
-                            <Heart className="w-5 h-5 fill-red-400 text-red-400" />
-                        ) : (
-                            <HeartOff className="w-5 h-5" />
-                        )}
-                    </button>
                 </div>
 
                 <div className="flex items-center justify-between mb-6">
