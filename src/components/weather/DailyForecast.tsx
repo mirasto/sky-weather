@@ -103,7 +103,7 @@ export function DailyForecast() {
                                 animate={{ opacity: 1, x: 0 }}
                                 transition={{ delay: index * 0.05 }}
                                 className={cn(
-                                    'flex items-center gap-3 py-3 px-3 rounded-xl',
+                                    'flex items-center gap-2 sm:gap-3 py-3 px-3 rounded-xl',
                                     'transition-all duration-200',
                                     'hover:bg-slate-100 dark:hover:bg-slate-700/50',
                                     'cursor-pointer group',
@@ -111,7 +111,7 @@ export function DailyForecast() {
                                 )}
                             >
                                 
-                                <div className="w-16 flex-shrink-0">
+                                <div className="w-14 sm:w-16 flex-shrink-0">
                                     <span className={cn(
                                         'text-sm font-medium',
                                         today ? 'text-indigo-600 dark:text-indigo-400' : ''
@@ -134,7 +134,7 @@ export function DailyForecast() {
                                     )}
                                 </div>
 
-                                <span className="w-10 text-sm text-slate-400 text-right flex-shrink-0">
+                                <span className="w-12 sm:w-14 text-sm text-slate-400 text-right flex-shrink-0 max-[1274px]:hidden">
                                     {formatTemperature(minTemp, 'metric', false)}°
                                 </span>
 
@@ -148,7 +148,7 @@ export function DailyForecast() {
                                     />
                                 </div>
 
-                                <span className="w-10 text-sm font-medium text-right flex-shrink-0">
+                                <span className="w-12 sm:w-14 text-sm font-medium text-right flex-shrink-0 max-[1274px]:hidden">
                                     {formatTemperature(maxTemp, 'metric', false)}°
                                 </span>
 
