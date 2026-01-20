@@ -54,7 +54,7 @@ export function RainProbability() {
                     icon={<CloudRain className="w-4 h-4" />}
                     action={
                         <span className="text-sm font-medium text-blue-500">
-                            Max: {maxProbability}%
+                            {t('charts.high')}: {maxProbability}%
                         </span>
                     }
                 />
@@ -90,7 +90,7 @@ export function RainProbability() {
                                     boxShadow: '0 4px 6px -1px rgb(0 0 0 / 0.1)'
                                 }}
                                 labelStyle={{ fontWeight: 600 }}
-                                formatter={(value: number) => [`${value}%`, 'Probability']}
+                                formatter={(value: number) => [`${value}%`, t('charts.probability')]}
                             />
                             <Area
                                 type="monotone"
@@ -112,7 +112,7 @@ export function RainProbability() {
 
                 {avgProbability > 50 && (
                     <p className="text-xs text-blue-500 mt-1">
-                        ☔ High chance of rain expected
+                        {t('forecast.highChanceRain')}
                     </p>
                 )}
             </Card>

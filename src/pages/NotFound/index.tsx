@@ -2,8 +2,11 @@ import { motion } from 'framer-motion';
 import { Link } from 'react-router-dom';
 import { Cloud, Home, Search } from 'lucide-react';
 import { Button } from '@/components/ui';
+import { useTranslation } from 'react-i18next';
 
 export function NotFoundPage() {
+    const { t } = useTranslation();
+
     return (
         <motion.main
             initial={{ opacity: 0 }}
@@ -35,7 +38,7 @@ export function NotFoundPage() {
                     transition={{ delay: 0.3 }}
                     className="text-2xl font-semibold mb-2"
                 >
-                    Page Not Found
+                    {t('notFound.title')}
                 </motion.h2>
 
                 <motion.p
@@ -44,7 +47,7 @@ export function NotFoundPage() {
                     transition={{ delay: 0.4 }}
                     className="text-slate-500 dark:text-slate-400 mb-8 max-w-md mx-auto"
                 >
-                    Looks like this page got lost in the clouds. Let's get you back on track.
+                    {t('notFound.message')}
                 </motion.p>
 
                 <motion.div
@@ -55,12 +58,12 @@ export function NotFoundPage() {
                 >
                     <Link to="/weather-app-vite">
                         <Button leftIcon={<Home className="w-4 h-4" />}>
-                            Go Home
+                            {t('notFound.goHome')}
                         </Button>
                     </Link>
                     <Link to="/weather-app-vite/forecast">
                         <Button variant="secondary" leftIcon={<Search className="w-4 h-4" />}>
-                            View Forecast
+                            {t('notFound.viewForecast')}
                         </Button>
                     </Link>
                 </motion.div>

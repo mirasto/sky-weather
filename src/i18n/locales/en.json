@@ -47,7 +47,34 @@
         "daily": "10-Day Forecast",
         "today": "Today",
         "tomorrow": "Tomorrow",
-        "weatherForecast": "Weather Forecast"
+        "weatherForecast": "Weather Forecast",
+        "title": "Weather forecast for",
+        "weeklyOverview": "Weekly Overview",
+        "tempRange": "Temperature Range",
+        "rainyDays": "Rainy Days This Week",
+        "chanceRain": "Chance of rain",
+        "clear": "Clear",
+        "highChanceRain": "☔ High chance of rain expected"
+    },
+    "dashboard": {
+        "title": "Weather Dashboard",
+        "savedCities": "Saved Cities",
+        "recentSearches": "Recent Searches",
+        "thisWeek": "This Week",
+        "forecastLoaded": "14-day forecast loaded",
+        "tempTrend": "Temperature Trend (12h)",
+        "precipProb": "Precipitation Probability",
+        "weeklyTemp": "Weekly Temperature Range",
+        "yourActivity": "Your Activity",
+        "currentTemp": "Current Temp",
+        "locations": "locations",
+        "queries": "queries",
+        "feels": "Feels",
+        "gusts": "Gusts",
+        "high": "High",
+        "normal": "Normal",
+        "excellent": "Excellent",
+        "good": "Good"
     },
     "uvLevels": {
         "low": "Low",
@@ -70,10 +97,24 @@
         "poor": "Poor",
         "veryPoor": "Very Poor"
     },
+    "aqiAdvice": {
+        "good": "Air quality is excellent. Enjoy outdoor activities.",
+        "fair": "Air quality is acceptable for most people.",
+        "moderate": "Sensitive individuals should limit outdoor activities.",
+        "poor": "Everyone may begin to experience health effects.",
+        "veryPoor": "Health warning: everyone should reduce outdoor activity."
+    },
     "map": {
         "precipitation": "Precipitation Map",
         "temperature": "Temperature",
         "clouds": "Clouds"
+    },
+    "charts": {
+        "temperature": "Temperature",
+        "feelsLike": "Feels Like",
+        "probability": "Probability",
+        "low": "Low",
+        "high": "High"
     },
     "settings": {
         "theme": "Theme",
@@ -84,6 +125,12 @@
         "system": "System",
         "metric": "Metric (°C)",
         "imperial": "Imperial (°F)"
+    },
+    "notFound": {
+        "title": "Page Not Found",
+        "message": "Looks like this page got lost in the clouds. Let's get you back on track.",
+        "goHome": "Go Home",
+        "viewForecast": "View Forecast"
     },
     "errors": {
         "networkError": "Network error. Check your connection.",

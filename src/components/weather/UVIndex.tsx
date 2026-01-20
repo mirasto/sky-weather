@@ -50,7 +50,7 @@ export function UVIndex() {
                 <div className="flex items-baseline gap-2">
                     <span className="text-4xl font-bold">{uvIndex}</span>
                     <span className="text-lg font-medium" style={{ color: uvInfo.color }}>
-                        {uvInfo.level}
+                        {t(`uvLevels.${uvInfo.levelKey}`)}
                     </span>
                 </div>
                 <div className="mt-4 h-2 bg-slate-500/10 rounded-full overflow-hidden">
@@ -61,6 +61,9 @@ export function UVIndex() {
                         style={{ backgroundColor: uvInfo.color }}
                     />
                 </div>
+                <p className="mt-2 text-xs text-slate-400 dark:text-slate-500">
+                    {t(`uvAdvice.${uvInfo.adviceKey}`)}
+                </p>
             </div>
         </motion.div>
     );

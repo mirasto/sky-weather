@@ -13,6 +13,8 @@ import { Card, CardHeader, PageSkeleton } from '@/components/ui';
 import { DailyForecast, HourlyTrend } from '@/components/weather';
 import { formatTemperature, cn } from '@/utils/helpers';
 
+import i18n from '@/i18n';
+
 export function ForecastPage() {
     const { t } = useTranslation();
     const coordinates = useAppSelector(selectCoordinates);
@@ -40,7 +42,7 @@ export function ForecastPage() {
     }
 
     const formatDate = (dateStr: string) => {
-        return new Date(dateStr).toLocaleDateString('en-US', {
+        return new Date(dateStr).toLocaleDateString(i18n.language, {
             weekday: 'short',
             month: 'short',
             day: 'numeric'
@@ -63,7 +65,7 @@ export function ForecastPage() {
                     {t('forecast.daily')}
                 </h1>
                 <p className="text-slate-500 dark:text-slate-400">
-                    Weather forecast for {location.city}, {location.country}
+                    {t('forecast.title')} {location.city}, {location.country}
                 </p>
             </motion.div>
 
@@ -96,7 +98,7 @@ export function ForecastPage() {
                     
                     <Card>
                         <CardHeader
-                            title="Weekly Overview"
+                            title={t('forecast.weeklyOverview')}
                             icon={<TrendingUp className="w-4 h-4" />}
                         />
 
@@ -104,7 +106,7 @@ export function ForecastPage() {
                             <div className="space-y-4">
                                 
                                 <div>
-                                    <p className="text-sm text-slate-500 mb-2">Temperature Range</p>
+                                    <p className="text-sm text-slate-500 mb-2">{t('forecast.tempRange')}</p>
                                     <div className="flex items-center justify-between">
                                         <span className="text-2xl font-bold text-blue-500">
                                             {formatTemperature(
@@ -125,7 +127,7 @@ export function ForecastPage() {
                                 </div>
 
                                 <div>
-                                    <p className="text-sm text-slate-500 mb-2">Rainy Days This Week</p>
+                                    <p className="text-sm text-slate-500 mb-2">{t('forecast.rainyDays')}</p>
                                     <div className="flex gap-1">
                                         {dailyData.daily.time.slice(0, 7).map((dateStr, i) => (
                                             <div
@@ -162,7 +164,7 @@ export function ForecastPage() {
                                 <div className="flex-1">
                                     <p className="font-semibold">{formatDate(dateStr)}</p>
                                     <p className="text-sm text-slate-500 capitalize">
-                                        {dailyData.daily.precipitation_probability_max[7 + index] > 30 ? 'Chance of rain' : 'Clear'}
+                                        {dailyData.daily.precipitation_probability_max[7 + index] > 30 ? t('forecast.chanceRain') : t('forecast.clear')}
                                     </p>
                                 </div>
                                 <div className="text-right">

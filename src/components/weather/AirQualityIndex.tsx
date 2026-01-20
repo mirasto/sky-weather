@@ -34,11 +34,11 @@ export function AirQualityIndex() {
                         {aqi}
                     </span>
                     <span className="text-sm font-medium" style={{ color: aqiInfo.color }}>
-                        {aqiInfo.level}
+                        {t(`aqiLevels.${aqiInfo.levelKey}`)}
                     </span>
                 </div>
                 <p className="mt-2 text-xs text-slate-400 dark:text-slate-500">
-                    {t('weather.aqiDescription')}
+                    {t(`aqiAdvice.${aqiInfo.adviceKey}`)}
                 </p>
             </div>
         </motion.div>

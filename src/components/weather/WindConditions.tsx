@@ -36,7 +36,7 @@ export function WindConditions() {
                 </div>
                 <div className="mt-2 text-sm font-medium text-teal-600 dark:text-teal-400 flex items-center gap-1">
                     <span className="rotate-0" style={{ transform: `rotate(${windDeg}deg)` }}>↓</span>
-                    {direction}
+                    {t('weather.windDirection')}: {direction}
                 </div>
             </div>
         </motion.div>

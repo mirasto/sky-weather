@@ -1,5 +1,6 @@
 import { clsx, type ClassValue } from 'clsx';
 import { twMerge } from 'tailwind-merge';
+import i18n from '@/i18n';
 
 export function cn(...inputs: ClassValue[]): string {
     return twMerge(clsx(inputs));
@@ -48,24 +49,25 @@ export function formatTime(
     options: Intl.DateTimeFormatOptions = { hour: '2-digit', minute: '2-digit' }
 ): string {
     const date = unixToDate(timestamp);
+    const locale = i18n.language;
     if (timezone !== undefined) {
         const utc = date.getTime() + date.getTimezoneOffset() * 60000;
         const localDate = new Date(utc + timezone * 1000);
-        return localDate.toLocaleTimeString('en-US', options);
+        return localDate.toLocaleTimeString(locale, options);
     }
-    return date.toLocaleTimeString('en-US', options);
+    return date.toLocaleTimeString(locale, options);
 }
 
 export function formatDate(
     timestamp: number,
     options: Intl.DateTimeFormatOptions = { weekday: 'short', month: 'short', day: 'numeric' }
 ): string {
-    return unixToDate(timestamp).toLocaleDateString('en-US', options);
+    return unixToDate(timestamp).toLocaleDateString(i18n.language, options);
 }
 
 export function getDayName(timestamp: number, short = true): string {
     const date = unixToDate(timestamp);
-    return date.toLocaleDateString('en-US', { weekday: short ? 'short' : 'long' });
+    return date.toLocaleDateString(i18n.language, { weekday: short ? 'short' : 'long' });
 }
 
 export function isToday(timestamp: number): boolean {
@@ -78,53 +80,53 @@ export function isToday(timestamp: number): boolean {
     );
 }
 
-export function getUVLevel(index: number): { level: string; color: string; description: string } {
+export function getUVLevel(index: number): { levelKey: string; color: string; adviceKey: string } {
     if (index <= 2) {
         return {
-            level: 'Low',
+            levelKey: 'low',
             color: '#4ade80',
-            description: 'No protection needed'
+            adviceKey: 'low'
         };
     } else if (index <= 5) {
         return {
-            level: 'Moderate',
+            levelKey: 'moderate',
             color: '#fbbf24',
-            description: 'Wear sunscreen'
+            adviceKey: 'moderate'
         };
     } else if (index <= 7) {
         return {
-            level: 'High',
+            levelKey: 'high',
             color: '#f97316',
-            description: 'Seek shade during midday'
+            adviceKey: 'high'
         };
     } else if (index <= 10) {
         return {
-            level: 'Very High',
+            levelKey: 'veryHigh',
             color: '#ef4444',
-            description: 'Avoid sun exposure'
+            adviceKey: 'veryHigh'
         };
     }
     return {
-        level: 'Extreme',
+        levelKey: 'extreme',
         color: '#a855f7',
-        description: 'Stay indoors'
+        adviceKey: 'extreme'
     };
 }
 
-export function getAQILevel(aqi: number): { level: string; color: string; description: string } {
+export function getAQILevel(aqi: number): { levelKey: string; color: string; adviceKey: string } {
     switch (aqi) {
         case 1:
-            return { level: 'Good', color: '#4ade80', description: 'Air quality is excellent' };
+            return { levelKey: 'good', color: '#4ade80', adviceKey: 'good' };
         case 2:
-            return { level: 'Fair', color: '#a3e635', description: 'Acceptable air quality' };
+            return { levelKey: 'fair', color: '#a3e635', adviceKey: 'fair' };
         case 3:
-            return { level: 'Moderate', color: '#fbbf24', description: 'Sensitive groups take care' };
+            return { levelKey: 'moderate', color: '#fbbf24', adviceKey: 'moderate' };
         case 4:
-            return { level: 'Poor', color: '#f97316', description: 'Everyone may experience effects' };
+            return { levelKey: 'poor', color: '#f97316', adviceKey: 'poor' };
         case 5:
-            return { level: 'Very Poor', color: '#ef4444', description: 'Health warnings issued' };
+            return { levelKey: 'veryPoor', color: '#ef4444', adviceKey: 'veryPoor' };
         default:
-            return { level: 'Unknown', color: '#9ca3af', description: 'Data unavailable' };
+            return { levelKey: 'unknown', color: '#9ca3af', adviceKey: 'unknown' };
     }
 }
 

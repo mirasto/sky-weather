@@ -22,6 +22,7 @@ import {
     Area,
     AreaChart
 } from 'recharts';
+import { useTranslation } from 'react-i18next';
 import { useAppSelector } from '@/store/hooks';
 import { selectCoordinates, selectLocation } from '@/store/slices/locationSlice';
 import {
@@ -32,8 +33,10 @@ import {
 } from '@/services/api/weatherApi';
 import { Card, CardHeader, PageSkeleton } from '@/components/ui';
 import { formatTime, cn } from '@/utils/helpers';
+import i18n from '@/i18n';
 
 export function DashboardPage() {
+    const { t } = useTranslation();
     const coordinates = useAppSelector(selectCoordinates);
     const location = useAppSelector(selectLocation);
     
@@ -67,7 +70,7 @@ export function DashboardPage() {
     })) || [];
 
     const weeklyTempData = dailyData?.daily.time.slice(0, 7).map((date, i) => ({
-        day: new Date(date).toLocaleDateString('en-US', { weekday: 'short' }),
+        day: new Date(date).toLocaleDateString(i18n.language, { weekday: 'short' }),
         high: Math.round(dailyData.daily.temperature_2m_max[i]),
         low: Math.round(dailyData.daily.temperature_2m_min[i])
     })) || [];
@@ -75,30 +78,30 @@ export function DashboardPage() {
     const stats = [
         {
             icon: Thermometer,
-            label: 'Current Temp',
+            label: t('dashboard.currentTemp'),
             value: currentWeather ? `${Math.round(currentWeather.main.temp)}°C` : '--',
-            change: currentWeather ? `Feels ${Math.round(currentWeather.main.feels_like)}°` : '',
+            change: currentWeather ? `${t('dashboard.feels')} ${Math.round(currentWeather.main.feels_like)}°` : '',
             color: 'text-orange-500'
         },
         {
             icon: Droplets,
-            label: 'Humidity',
+            label: t('weather.humidity'),
             value: currentWeather ? `${currentWeather.main.humidity}%` : '--',
-            change: (currentWeather?.main.humidity ?? 0) > 60 ? 'High' : 'Normal',
+            change: (currentWeather?.main.humidity ?? 0) > 60 ? t('dashboard.high') : t('dashboard.normal'),
             color: 'text-blue-500'
         },
         {
             icon: Wind,
-            label: 'Wind Speed',
+            label: t('weather.windSpeed'),
             value: currentWeather ? `${currentWeather.wind.speed} m/s` : '--',
-            change: currentWeather?.wind.gust ? `Gusts ${currentWeather.wind.gust}` : '',
+            change: currentWeather?.wind.gust ? `${t('dashboard.gusts')} ${currentWeather.wind.gust}` : '',
             color: 'text-green-500'
         },
         {
             icon: Sun,
-            label: 'Visibility',
+            label: t('weather.visibility'),
             value: currentWeather ? `${(currentWeather.visibility / 1000).toFixed(1)} km` : '--',
-            change: currentWeather && currentWeather.visibility >= 10000 ? 'Excellent' : 'Good',
+            change: currentWeather && currentWeather.visibility >= 10000 ? t('dashboard.excellent') : t('dashboard.good'),
             color: 'text-amber-500'
         }
     ];
@@ -117,14 +120,14 @@ export function DashboardPage() {
             >
                 <div className="flex items-center gap-3 mb-2">
                     <BarChart3 className="w-8 h-8 text-indigo-500" />
-                    <h1 className="text-3xl font-bold">Weather Dashboard</h1>
+                    <h1 className="text-3xl font-bold">{t('dashboard.title')}</h1>
                 </div>
                 <p className="text-slate-500 dark:text-slate-400 flex items-center gap-2">
                     <MapPin className="w-4 h-4" />
                     {location.city}, {location.country}
                     <span className="text-slate-300 dark:text-slate-600">•</span>
                     <Clock className="w-4 h-4" />
-                    {new Date().toLocaleDateString('en-US', { weekday: 'long', month: 'long', day: 'numeric' })}
+                    {new Date().toLocaleDateString(i18n.language, { weekday: 'long', month: 'long', day: 'numeric' })}
                 </p>
             </motion.div>
 
@@ -160,7 +163,7 @@ export function DashboardPage() {
                 >
                     <Card>
                         <CardHeader
-                            title="Temperature Trend (12h)"
+                            title={t('dashboard.tempTrend')}
                             icon={<TrendingUp className="w-4 h-4" />}
                         />
                         <div className="h-64 mt-4">
@@ -198,7 +201,7 @@ export function DashboardPage() {
                                         stroke="#f97316"
                                         strokeWidth={2}
                                         fill="url(#tempGradient)"
-                                        name="Temperature"
+                                        name={t('charts.temperature')}
                                     />
                                     <Line
                                         type="monotone"
@@ -207,7 +210,7 @@ export function DashboardPage() {
                                         strokeWidth={1}
                                         strokeDasharray="5 5"
                                         dot={false}
-                                        name="Feels Like"
+                                        name={t('charts.feelsLike')}
                                     />
                                 </AreaChart>
                             </ResponsiveContainer>
@@ -222,7 +225,7 @@ export function DashboardPage() {
                 >
                     <Card>
                         <CardHeader
-                            title="Precipitation Probability"
+                            title={t('dashboard.precipProb')}
                             icon={<Droplets className="w-4 h-4" />}
                         />
                         <div className="h-64 mt-4">
@@ -252,7 +255,7 @@ export function DashboardPage() {
                                         dataKey="probability"
                                         fill="#3b82f6"
                                         radius={[4, 4, 0, 0]}
-                                        name="Probability"
+                                        name={t('charts.probability')}
                                     />
                                 </BarChart>
                             </ResponsiveContainer>
@@ -271,7 +274,7 @@ export function DashboardPage() {
                 >
                     <Card>
                         <CardHeader
-                            title="Weekly Temperature Range"
+                            title={t('dashboard.weeklyTemp')}
                             icon={<Calendar className="w-4 h-4" />}
                         />
                         <div className="h-64 mt-4">
@@ -299,8 +302,8 @@ export function DashboardPage() {
                                             boxShadow: '0 4px 6px -1px rgb(0 0 0 / 0.1)'
                                         }}
                                     />
-                                    <Bar dataKey="low" fill="#3b82f6" radius={[4, 0, 0, 4]} name="Low" />
-                                    <Bar dataKey="high" fill="#f97316" radius={[0, 4, 4, 0]} name="High" />
+                                    <Bar dataKey="low" fill="#3b82f6" radius={[4, 0, 0, 4]} name={t('charts.low')} />
+                                    <Bar dataKey="high" fill="#f97316" radius={[0, 4, 4, 0]} name={t('charts.high')} />
                                 </BarChart>
                             </ResponsiveContainer>
                         </div>
@@ -314,7 +317,7 @@ export function DashboardPage() {
                 >
                     <Card>
                         <CardHeader
-                            title="Your Activity"
+                            title={t('dashboard.yourActivity')}
                             icon={<BarChart3 className="w-4 h-4" />}
                         />
                         <div className="space-y-4 mt-4">
@@ -324,8 +327,8 @@ export function DashboardPage() {
                                         <MapPin className="w-5 h-5 text-indigo-500" />
                                     </div>
                                     <div>
-                                        <p className="font-medium">Saved Cities</p>
-                                        <p className="text-sm text-slate-500">{favoritesCount} locations</p>
+                                        <p className="font-medium">{t('dashboard.savedCities')}</p>
+                                        <p className="text-sm text-slate-500">{favoritesCount} {t('dashboard.locations')}</p>
                                     </div>
                                 </div>
                             </div>
@@ -336,8 +339,8 @@ export function DashboardPage() {
                                         <Clock className="w-5 h-5 text-green-500" />
                                     </div>
                                     <div>
-                                        <p className="font-medium">Recent Searches</p>
-                                        <p className="text-sm text-slate-500">{recentSearchesCount} queries</p>
+                                        <p className="font-medium">{t('dashboard.recentSearches')}</p>
+                                        <p className="text-sm text-slate-500">{recentSearchesCount} {t('dashboard.queries')}</p>
                                     </div>
                                 </div>
                             </div>
@@ -348,8 +351,8 @@ export function DashboardPage() {
                                         <TrendingUp className="w-5 h-5 text-amber-500" />
                                     </div>
                                     <div>
-                                        <p className="font-medium">This Week</p>
-                                        <p className="text-sm text-slate-500">14-day forecast loaded</p>
+                                        <p className="font-medium">{t('dashboard.thisWeek')}</p>
+                                        <p className="text-sm text-slate-500">{t('dashboard.forecastLoaded')}</p>
                                     </div>
                                 </div>
                             </div>
