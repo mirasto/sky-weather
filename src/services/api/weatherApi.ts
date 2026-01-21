@@ -82,16 +82,22 @@ export interface OpenMeteoDailyResponse {
         time: string[];
         temperature_2m_max: number[];
         temperature_2m_min: number[];
+        apparent_temperature_max: number[];
         precipitation_probability_max: number[];
         weathercode: number[];
         sunrise: string[];
         sunset: string[];
+        windspeed_10m_max: number[];
+        winddirection_10m_dominant: number[];
+        uv_index_max: number[];
+        relative_humidity_2m_mean: number[];
+        surface_pressure_mean: number[];
     };
 }
 
 export const fetchDailyForecast = async (lat: number, lng: number): Promise<OpenMeteoDailyResponse> => {
     const response = await fetch(
-        `https://api.open-meteo.com/v1/forecast?latitude=${lat}&longitude=${lng}&daily=temperature_2m_max,temperature_2m_min,precipitation_probability_max,weathercode,sunrise,sunset&timezone=auto&forecast_days=14`
+        `https://api.open-meteo.com/v1/forecast?latitude=${lat}&longitude=${lng}&daily=temperature_2m_max,temperature_2m_min,apparent_temperature_max,precipitation_probability_max,weathercode,sunrise,sunset,windspeed_10m_max,winddirection_10m_dominant,uv_index_max,relative_humidity_2m_mean,surface_pressure_mean&timezone=auto&forecast_days=14`
     );
 
     if (!response.ok) {

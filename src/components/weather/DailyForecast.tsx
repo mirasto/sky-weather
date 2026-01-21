@@ -2,8 +2,9 @@ import { useEffect, useState } from 'react';
 import { motion } from 'framer-motion';
 import { Calendar, ChevronRight } from 'lucide-react';
 import { useTranslation } from 'react-i18next';
-import { useAppSelector } from '@/store/hooks';
+import { useAppSelector, useAppDispatch } from '@/store/hooks';
 import { selectCoordinates } from '@/store/slices/locationSlice';
+import { setSelectedWeather } from '@/store/slices/weatherInteractionSlice';
 import {
     fetchDailyForecast,
     getWeatherIconFromCode,
@@ -13,13 +14,16 @@ import {
 import { Card, CardHeader, WidgetSkeleton } from '@/components/ui';
 import { formatTemperature, cn } from '@/utils/helpers';
 import { LIMITS } from '@/utils/constants';
+import { CurrentWeatherResponse } from '@/types';
 
 export function DailyForecast() {
     const { t, i18n } = useTranslation();
+    const dispatch = useAppDispatch();
     const coordinates = useAppSelector(selectCoordinates);
     const [data, setData] = useState<OpenMeteoDailyResponse | null>(null);
     const [isLoading, setIsLoading] = useState(true);
     const [error, setError] = useState<string | null>(null);
+    const selectedWeather = useAppSelector((state: any) => state.weatherInteraction.selectedWeather);
 
     useEffect(() => {
         const loadData = async () => {
@@ -38,6 +42,63 @@ export function DailyForecast() {
 
         loadData();
     }, [coordinates.lat, coordinates.lng]);
+
+    const handleDayClick = (index: number) => {
+        if (!data) return;
+
+        const maxTemp = data.daily.temperature_2m_max[index];
+        const minTemp = data.daily.temperature_2m_min[index];
+        const weatherCode = data.daily.weathercode[index];
+        const windSpeed = data.daily.windspeed_10m_max?.[index] ?? 0;
+        const windDeg = data.daily.winddirection_10m_dominant?.[index] ?? 0;
+        const humidity = data.daily.relative_humidity_2m_mean?.[index] ?? 0;
+        const pressure = data.daily.surface_pressure_mean?.[index] ?? 1013;
+        const feelsLike = data.daily.apparent_temperature_max?.[index] ?? maxTemp;
+        const dateStr = data.daily.time[index];
+        const timestamp = new Date(dateStr).getTime() / 1000;
+
+        const weatherData: CurrentWeatherResponse = {
+            coord: {
+                lat: data.latitude,
+                lon: data.longitude
+            },
+            weather: [{
+                id: weatherCode,
+                main: getWeatherDescriptionFromCode(weatherCode),
+                description: getWeatherDescriptionFromCode(weatherCode),
+                icon: getWeatherIconFromCode(weatherCode)
+            }],
+            base: 'stations',
+            main: {
+                temp: maxTemp,
+                feels_like: feelsLike,
+                temp_min: minTemp,
+                temp_max: maxTemp,
+                pressure: pressure,
+                humidity: humidity
+            },
+            visibility: 10000,
+            wind: {
+                speed: windSpeed,
+                deg: windDeg
+            },
+            clouds: {
+                all: 0
+            },
+            dt: timestamp,
+            sys: {
+                country: 'UA', // Should ideally come from geocoding or API
+                sunrise: new Date(data.daily.sunrise[index]).getTime() / 1000,
+                sunset: new Date(data.daily.sunset[index]).getTime() / 1000
+            },
+            timezone: 0, // Should come from API
+            id: 0,
+            name: '', // Should come from API
+            cod: 200
+        };
+
+        dispatch(setSelectedWeather(weatherData));
+    };
 
     if (isLoading) {
         return (
@@ -91,6 +152,10 @@ export function DailyForecast() {
                         const pop = data.daily.precipitation_probability_max[index];
                         const weatherCode = data.daily.weathercode[index];
                         const today = isToday(dateStr);
+                        
+                        const itemDate = new Date(dateStr);
+                        const isSelected = selectedWeather && new Date(selectedWeather.dt * 1000).toDateString() === itemDate.toDateString();
+                        const active = (today && !selectedWeather) || isSelected;
 
                         const minPosition = ((minTemp - globalMin) / tempRange) * 100;
                         const maxPosition = ((maxTemp - globalMin) / tempRange) * 100;
@@ -99,22 +164,24 @@ export function DailyForecast() {
                         return (
                             <motion.div
                                 key={dateStr}
+                                onClick={() => handleDayClick(index)}
                                 initial={{ opacity: 0, x: -20 }}
                                 animate={{ opacity: 1, x: 0 }}
                                 transition={{ delay: index * 0.05 }}
                                 className={cn(
                                     'flex items-center gap-2 sm:gap-3 py-3 px-3 rounded-xl',
                                     'transition-all duration-200',
-                                    'hover:bg-slate-100 dark:hover:bg-slate-700/50',
                                     'cursor-pointer group',
-                                    today && 'bg-indigo-50 dark:bg-indigo-900/20'
+                                    active
+                                        ? 'bg-indigo-100 dark:bg-indigo-900/50 scale-[1.02]'
+                                        : 'hover:bg-slate-100 dark:hover:bg-slate-700/50'
                                 )}
                             >
                                 
                                 <div className="w-14 sm:w-16 flex-shrink-0">
                                     <span className={cn(
                                         'text-sm font-medium',
-                                        today ? 'text-indigo-600 dark:text-indigo-400' : ''
+                                        active ? 'text-indigo-600 dark:text-indigo-400' : ''
                                     )}>
                                         {today ? t('forecast.today') : getDayName(dateStr)}
                                     </span>
