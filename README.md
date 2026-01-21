@@ -27,7 +27,7 @@
 -  **Data Visualization** – Interactive hourly and daily trends powered by professional charting libraries.
 -  **Atmospheric Intelligence** – Deep tracking of Air Quality (AQI), Pollutant concentrations (PM2.5, NO₂), and UV cycles.
 -  **Celestial Dynamics** – Scientific tracking of solar cycles with custom-engineered arc visualizations.
--  **Progressive Web App (PWA)** – Fully responsive and installable offline experience with background synchronization.
+-  **Progressive Web App** – Fully responsive and installable offline experience with background synchronization.
 -  **Global Geocoding** – Worldwide city indexing and search optimized by Open-Meteo algorithms.
 -  **Dynamic Themes** – Context-aware Light and Dark modes with automatic system preference detection.
 -  **Global Localization** – Full i18n support including English and Ukrainian (UKR) translations.
