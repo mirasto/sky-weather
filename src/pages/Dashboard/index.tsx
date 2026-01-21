@@ -39,9 +39,6 @@ export function DashboardPage() {
     const { t } = useTranslation();
     const coordinates = useAppSelector(selectCoordinates);
     const location = useAppSelector(selectLocation);
-    
-    const favoritesCount = useAppSelector((state) => (state.favorites as any)?.cities?.length ?? 0);
-    const recentSearchesCount = useAppSelector((state) => (state.favorites as any)?.recentSearches?.length ?? 0);
 
     const { data: currentWeather, isLoading: weatherLoading } = useGetCurrentWeatherQuery(coordinates);
     const { data: hourlyData, isLoading: hourlyLoading } = useGetHourlyForecastQuery(coordinates);

@@ -177,7 +177,7 @@ export function SearchBar({ className, onLocationSelect }: SearchBarProps) {
                         {suggestions.length > 0 && (
                             <div className="p-2">
                                 {suggestions.map((city) => (
-                                    <button
+                                    <div
                                         key={city.id}
                                         onClick={() => handleSelect(city)}
                                         className={cn(
@@ -185,7 +185,7 @@ export function SearchBar({ className, onLocationSelect }: SearchBarProps) {
                                             'text-left text-sm',
                                             'rounded-xl',
                                             'hover:bg-slate-100 dark:hover:bg-slate-700',
-                                            'transition-colors'
+                                            'transition-colors cursor-pointer'
                                         )}
                                         role="option"
                                     >
@@ -198,7 +198,7 @@ export function SearchBar({ className, onLocationSelect }: SearchBarProps) {
                                                 {city.admin1 ? `${city.admin1}, ` : ''}{city.country}
                                             </span>
                                         </div>
-                                    </button>
+                                    </div>
                                 ))}
                             </div>
                         )}
@@ -209,7 +209,7 @@ export function SearchBar({ className, onLocationSelect }: SearchBarProps) {
                                     {t('search.recentSearches')}
                                 </p>
                                 {recentSearches.slice(0, 5).map((search) => (
-                                    <button
+                                    <div
                                         key={search.id}
                                         onClick={() => handleRecentSearchClick(search)}
                                         className={cn(
@@ -217,7 +217,7 @@ export function SearchBar({ className, onLocationSelect }: SearchBarProps) {
                                             'text-left text-sm',
                                             'rounded-xl',
                                             'hover:bg-slate-100 dark:hover:bg-slate-700',
-                                            'transition-colors group'
+                                            'transition-colors group cursor-pointer'
                                         )}
                                         role="option"
                                     >
@@ -232,7 +232,7 @@ export function SearchBar({ className, onLocationSelect }: SearchBarProps) {
                                         >
                                             <X className="w-3 h-3" />
                                         </button>
-                                    </button>
+                                    </div>
                                 ))}
                             </div>
                         )}
