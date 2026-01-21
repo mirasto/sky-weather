@@ -270,7 +270,7 @@ export function DashboardPage() {
                     initial={{ opacity: 0, y: 20 }}
                     animate={{ opacity: 1, y: 0 }}
                     transition={{ delay: 0.4 }}
-                    className="lg:col-span-2"
+                    className="lg:col-span-3"
                 >
                     <Card>
                         <CardHeader
@@ -306,56 +306,6 @@ export function DashboardPage() {
                                     <Bar dataKey="high" fill="#f97316" radius={[0, 4, 4, 0]} name={t('charts.high')} />
                                 </BarChart>
                             </ResponsiveContainer>
-                        </div>
-                    </Card>
-                </motion.div>
-
-                <motion.div
-                    initial={{ opacity: 0, y: 20 }}
-                    animate={{ opacity: 1, y: 0 }}
-                    transition={{ delay: 0.5 }}
-                >
-                    <Card>
-                        <CardHeader
-                            title={t('dashboard.yourActivity')}
-                            icon={<BarChart3 className="w-4 h-4" />}
-                        />
-                        <div className="space-y-4 mt-4">
-                            <div className="flex items-center justify-between p-3 bg-slate-100 dark:bg-slate-700/50 rounded-xl">
-                                <div className="flex items-center gap-3">
-                                    <div className="w-10 h-10 rounded-full bg-indigo-100 dark:bg-indigo-900/50 flex items-center justify-center">
-                                        <MapPin className="w-5 h-5 text-indigo-500" />
-                                    </div>
-                                    <div>
-                                        <p className="font-medium">{t('dashboard.savedCities')}</p>
-                                        <p className="text-sm text-slate-500">{favoritesCount} {t('dashboard.locations')}</p>
-                                    </div>
-                                </div>
-                            </div>
-
-                            <div className="flex items-center justify-between p-3 bg-slate-100 dark:bg-slate-700/50 rounded-xl">
-                                <div className="flex items-center gap-3">
-                                    <div className="w-10 h-10 rounded-full bg-green-100 dark:bg-green-900/50 flex items-center justify-center">
-                                        <Clock className="w-5 h-5 text-green-500" />
-                                    </div>
-                                    <div>
-                                        <p className="font-medium">{t('dashboard.recentSearches')}</p>
-                                        <p className="text-sm text-slate-500">{recentSearchesCount} {t('dashboard.queries')}</p>
-                                    </div>
-                                </div>
-                            </div>
-
-                            <div className="flex items-center justify-between p-3 bg-slate-100 dark:bg-slate-700/50 rounded-xl">
-                                <div className="flex items-center gap-3">
-                                    <div className="w-10 h-10 rounded-full bg-amber-100 dark:bg-amber-900/50 flex items-center justify-center">
-                                        <TrendingUp className="w-5 h-5 text-amber-500" />
-                                    </div>
-                                    <div>
-                                        <p className="font-medium">{t('dashboard.thisWeek')}</p>
-                                        <p className="text-sm text-slate-500">{t('dashboard.forecastLoaded')}</p>
-                                    </div>
-                                </div>
-                            </div>
                         </div>
                     </Card>
                 </motion.div>
