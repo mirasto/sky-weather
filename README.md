@@ -108,16 +108,3 @@ src/
    ```bash
    npm run dev
    ```
-
----
-
-## 👨‍💻 Engineering & Standards
-
-**Developed by [mirasto](https://github.com/mirasto)**
-
-### **Development Philosophy**
-- **Code Quality**: Strict ESLint configuration and Prettier formatting.
-- **Commit Methodology**: Strict adherence to the [Conventional Commits](https://www.conventionalcommits.org/) specification.
-- **Reliability**: Component and logic testing via [Vitest](https://vitest.dev/).
-
----
