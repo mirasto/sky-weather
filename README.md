@@ -2,13 +2,13 @@
 
 <div align="center">
 
-![Preview](https://i.postimg.cc/wjW6mQrj/sky-Weather.png)
+![Dashboard](https://i.ibb.co/9mg3NDtB/skyhome.png)
 
 
 **A state-of-the-art meteorological intelligence platform built for precision and visual elegance.**
 
 [![TypeScript](https://img.shields.io/badge/TypeScript-5.x-blue?style=for-the-badge&logo=typescript)](https://www.typescriptlang.org/)
-[![React](https://img.shields.io/badge/React-18.2-61DAFB?style=for-the-badge&logo=react)](https://reactjs.org/)
+[![React](https://img.shields.io/badge/React-19.2-61DAFB?style=for-the-badge&logo=react)](https://reactjs.org/)
 [![Vite](https://img.shields.io/badge/Vite-4.x-646CFF?style=for-the-badge&logo=vite)](https://vitejs.dev/)
 [![TailwindCSS](https://img.shields.io/badge/Tailwind-3.x-38B2AC?style=for-the-badge&logo=tailwind-css)](https://tailwindcss.com/)
 [![Redux](https://img.shields.io/badge/Redux-Toolkit-764ABC?style=for-the-badge&logo=redux)](https://redux-toolkit.js.org/)
@@ -26,7 +26,6 @@
 - 🛰️ **Real-Time Synchronicity** – Live meteorological data stream optimized for minimal latency.
 - � **Data Visualization** – Interactive hourly and daily trends powered by professional charting libraries.
 - 🌪️ **Atmospheric Intelligence** – Deep tracking of Air Quality (AQI), Pollutant concentrations (PM2.5, NO₂), and UV cycles.
-- 🗺️ **Interactive Radar** – High-precision geospatial weather maps with real-time precipitation layers.
 - 🌅 **Celestial Dynamics** – Scientific tracking of solar cycles with custom-engineered arc visualizations.
 - 📱 **Progressive Web App (PWA)** – Fully responsive and installable offline experience with background synchronization.
 - 🔍 **Global Geocoding** – Worldwide city indexing and search optimized by Open-Meteo algorithms.
@@ -36,7 +35,7 @@
 ## 🛠️ Technical Architecture
 
 ### **Core Framework**
-- **React 18** – Leveraging Concurrent Mode, Suspense for data fetching, and functional hooks.
+- **React 19** – Leveraging Concurrent Mode, Suspense for data fetching, and functional hooks.
 - **TypeScript** – Full-spectrum type safety ensuring robust code quality and maintainability.
 - **Vite** – Next-generation frontend tooling for instantaneous Hot Module Replacement (HMR).
 
@@ -51,9 +50,7 @@
 - **Lucide & Heroicons** – Curated vector iconography for sharp visual communication.
 
 ### **Intelligence Layers**
-- **Meteorology**: [OpenWeatherMap Pro API](https://openweathermap.org/)
-- **Geocoding**: [Open-Meteo Geocoding API](https://open-meteo.com/)
-- **Mapping**: [Leaflet Engine](https://leafletjs.com/) with high-resolution tile services.
+- **Meteorology**: OpenWeatherMap Pro API
 
 ---
 
@@ -71,6 +68,24 @@ src/
 ├── types/          # Domain-specific TypeScript interfaces and models
 └── utils/          # Pure logic helpers, geospatial tools, and constants
 ```
+
+---
+
+## 📖 Usage Examples
+
+### 🔍 Searching for a Location
+
+- Click the search bar at the top of the interface.
+- Type a city name (e.g., "London", "Kyiv", "New York").
+- Select the correct location from the dropdown suggestions.
+- The dashboard will instantly update with local data.
+
+  
+
+### 🌗 Toggling Themes
+- Access the settings menu (gear icon).
+- Toggle between Light, Dark, or System Sync modes.
+- Your preference is persisted across sessions.
 
 ---
 
@@ -104,7 +119,14 @@ src/
    npm run build
    ```
 
-5. **Development Environment**
-   ```bash
-   npm run dev
-   ```
+---
+### 📸 Screenshots
+
+**Forecast**
+
+![Forecast](https://i.ibb.co/HfkYW81W/skyforecast.png)
+
+**Home**
+
+![Home](https://i.ibb.co/9mg3NDtB/skyhome.png)
+
