@@ -1,4 +1,4 @@
-# ☁️ SkyWeather
+# SkyWeather
 
 <div align="center">
 
@@ -17,22 +17,22 @@
 
 ---
 
-## 🌟 Overview
+## Overview
 
 **SkyWeather** is a premium weather application that delivers high-fidelity meteorological data through a sophisticated, glassmorphic interface. Designed for users who demand both precision and aesthetic excellence, it leverages modern API architectures to provide real-time atmospheric insights, interactive mapping, and comprehensive localized forecasts.
 
-## ✨ Key Features
+## Key Features
 
-- 🛰️ **Real-Time Synchronicity** – Live meteorological data stream optimized for minimal latency.
-- � **Data Visualization** – Interactive hourly and daily trends powered by professional charting libraries.
-- 🌪️ **Atmospheric Intelligence** – Deep tracking of Air Quality (AQI), Pollutant concentrations (PM2.5, NO₂), and UV cycles.
-- 🌅 **Celestial Dynamics** – Scientific tracking of solar cycles with custom-engineered arc visualizations.
-- 📱 **Progressive Web App (PWA)** – Fully responsive and installable offline experience with background synchronization.
-- 🔍 **Global Geocoding** – Worldwide city indexing and search optimized by Open-Meteo algorithms.
-- 🌓 **Dynamic Themes** – Context-aware Light and Dark modes with automatic system preference detection.
-- 🌐 **Global Localization** – Full i18n support including English and Ukrainian (UKR) translations.
+-  **Real-Time Synchronicity** – Live meteorological data stream optimized for minimal latency.
+-  **Data Visualization** – Interactive hourly and daily trends powered by professional charting libraries.
+-  **Atmospheric Intelligence** – Deep tracking of Air Quality (AQI), Pollutant concentrations (PM2.5, NO₂), and UV cycles.
+-  **Celestial Dynamics** – Scientific tracking of solar cycles with custom-engineered arc visualizations.
+-  **Progressive Web App (PWA)** – Fully responsive and installable offline experience with background synchronization.
+-  **Global Geocoding** – Worldwide city indexing and search optimized by Open-Meteo algorithms.
+-  **Dynamic Themes** – Context-aware Light and Dark modes with automatic system preference detection.
+-  **Global Localization** – Full i18n support including English and Ukrainian (UKR) translations.
 
-## 🛠️ Technical Architecture
+## Technical Architecture
 
 ### **Core Framework**
 - **React 19** – Leveraging Concurrent Mode, Suspense for data fetching, and functional hooks.
@@ -54,7 +54,7 @@
 
 ---
 
-## 📂 Project Structure
+## Project Structure
 
 ```bash
 src/
@@ -71,9 +71,9 @@ src/
 
 ---
 
-## 📖 Usage Examples
+## Usage Examples
 
-### 🔍 Searching for a Location
+### Searching for a Location
 
 - Click the search bar at the top of the interface.
 - Type a city name (e.g., "London", "Kyiv", "New York").
@@ -82,14 +82,14 @@ src/
 
   
 
-### 🌗 Toggling Themes
+### Toggling Themes
 - Access the settings menu (gear icon).
 - Toggle between Light, Dark, or System Sync modes.
 - Your preference is persisted across sessions.
 
 ---
 
-## 🚀 Installation & Deployment
+## Installation & Deployment
 
 ### Prerequisites
 - **Node.js**: `v18.0` or higher
@@ -120,7 +120,7 @@ src/
    ```
 
 ---
-### 📸 Screenshots
+### Screenshots
 
 **Forecast**
 
