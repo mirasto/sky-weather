@@ -19,7 +19,7 @@
 
 ## Overview
 
-**SkyWeather** is a weather application that delivers high-fidelity meteorological data through a sophisticated, glassmorphic interface. Designed for users who demand both precision and aesthetic excellence, it leverages modern API architectures to provide real-time atmospheric insights, interactive mapping, and comprehensive localized forecasts.
+**SkyWeather** is a weather application that delivers high-fidelity meteorological data through a sophisticated, glassmorphic interface. Designed for users who demand both precision and aesthetic excellence, it leverages modern API architectures to provide real-time atmospheric insights, and comprehensive localized forecasts.
 
 ## Key Features
 
@@ -79,8 +79,6 @@ src/
 - Type a city name (e.g., "London", "Kyiv", "New York").
 - Select the correct location from the dropdown suggestions.
 - The dashboard will instantly update with local data.
-
-  
 
 ### Toggling Themes
 - Access the settings menu (gear icon).
