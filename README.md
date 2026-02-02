@@ -5,7 +5,7 @@
 ![Dashboard](https://i.ibb.co/9mg3NDtB/skyhome.png)
 
 
-**A state-of-the-art meteorological intelligence platform built for precision and visual elegance.**
+**A meteorological platform built for precision and visual elegance.**
 
 [![TypeScript](https://img.shields.io/badge/TypeScript-5.x-blue?style=for-the-badge&logo=typescript)](https://www.typescriptlang.org/)
 [![React](https://img.shields.io/badge/React-19.2-61DAFB?style=for-the-badge&logo=react)](https://reactjs.org/)
